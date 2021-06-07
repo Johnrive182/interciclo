@@ -1,90 +1,139 @@
 package edu.examen.interciclo.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
+@Table(name = "universidades_table")
 public class Universidad {
-    @Id
-	private int Id;
 	
-	private String Nombre;
-	private String Descripcion;
-	private String Direccion;
-	private int Telefono;
-	private int NroEstudiantes;
-	private String CorreoElectronico;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "nombre_universidad", columnDefinition = "text")
+	private String nombre;
+	
+	@Column(length = 100)
+	private String descripcion;
+	
+	@Column(length = 30)	
+	private String direccion;
 
-	public Universidad(int id, String nombre, String descripcion, String direccion, int telefono, int nroEstudiantes,
+	private int telefono;
+	
+	private int nroEstudiantes;
+	
+	@Column(length = 30)
+	private String correoElectronico;
+
+	
+	
+	public Universidad( String nombre, String descripcion, String direccion, int telefono, int nroEstudiantes,
 			String correoElectronico) {
-		super();
-		Id = id;
-		Nombre = nombre;
-		Descripcion = descripcion;
-		Direccion = direccion;
-		Telefono = telefono;
-		NroEstudiantes = nroEstudiantes;
-		CorreoElectronico = correoElectronico;
-
+		super();	
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.nroEstudiantes = nroEstudiantes;
+		this.correoElectronico = correoElectronico;
 	}
 
-	public Universidad() {
-		super();
-	}
+
 
 	public int getId() {
-		return Id;
+		return id;
 	}
+
+
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
+
+
 
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
+
+
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
+
+
 
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
+
+
 
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
+
+
 
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
+
+
 
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
 	}
+
+
 
 	public int getTelefono() {
-		return Telefono;
+		return telefono;
 	}
+
+
 
 	public void setTelefono(int telefono) {
-		Telefono = telefono;
+		this.telefono = telefono;
 	}
+
+
 
 	public int getNroEstudiantes() {
-		return NroEstudiantes;
+		return nroEstudiantes;
 	}
+
+
 
 	public void setNroEstudiantes(int nroEstudiantes) {
-		NroEstudiantes = nroEstudiantes;
+		this.nroEstudiantes = nroEstudiantes;
 	}
+
+
 
 	public String getCorreoElectronico() {
-		return CorreoElectronico;
+		return correoElectronico;
 	}
 
+
+
 	public void setCorreoElectronico(String correoElectronico) {
-		CorreoElectronico = correoElectronico;
+		this.correoElectronico = correoElectronico;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", nroestudiantes=" + nroEstudiantes + ", correoelectronico=" + correoElectronico+"]";
 	}
 
 }
